@@ -1,0 +1,43 @@
+digraph ktrain_text_ner_dot {
+	node [shape=box]
+	"text.textutils"
+	"text.preprocessor"
+	subgraph "cluster_text.ner" {
+		"text.ner.learner"
+		"text.ner.models"
+		"text.ner.data"
+		"text.ner.preprocessor"
+		"text.ner.predictor"
+		subgraph "cluster_text.ner.anago" {
+			"text.ner.anago.callbacks"
+			"text.ner.anago.models"
+			"text.ner.anago.preprocessing"
+			"text.ner.anago.trainer"
+			"text.ner.anago.tagger"
+			"text.ner.anago.wrapper"
+			"text.ner.anago.layers"
+			"text.ner.anago.utils"
+			"text.ner.anago.layers_standalone"
+			label="ktrain.text.ner.anago"
+		}
+		label="ktrain.text.ner"
+	}
+	"text.ner.anago.models" -> "text.ner.models"
+	"text.ner.anago.tagger" -> "text.ner.anago.wrapper"
+	"text.ner.anago.callbacks" -> "text.ner.anago.trainer"
+	"text.ner.anago.models" -> "text.ner.anago.wrapper"
+	"text.ner.anago.preprocessing" -> "text.ner.anago.wrapper"
+	"text.ner.anago.trainer" -> "text.ner.anago.wrapper"
+	"text.ner.anago.utils" -> "text.ner.predictor"
+	"text.ner.anago.utils" -> "text.ner.anago.preprocessing"
+	"text.ner.anago.utils" -> "text.ner.anago.trainer"
+	"text.ner.anago.utils" -> "text.ner.anago.wrapper"
+	"text.ner.preprocessor" -> "text.ner.data"
+	"text.ner.preprocessor" -> "text.ner.models"
+	"text.ner.preprocessor" -> "text.ner.predictor"
+	"text.textutils" -> "text.ner.predictor"
+	"text.textutils" -> "text.ner.data"
+	"text.preprocessor" -> "text.ner.predictor"
+	"text.textutils" -> "text.preprocessor" [style=invis]
+	"text.preprocessor" -> "text.ner.models" [style=invis]
+}

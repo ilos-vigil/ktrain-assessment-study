@@ -1,0 +1,14 @@
+digraph graph_dot {
+	node [shape=box]
+	subgraph cluster_graph {
+		"graph.data"
+		"graph.learner"
+		"graph.models"
+		"graph.predictor"
+		"graph.preprocessor"
+		label="ktrain.graph"
+	}
+	"graph.preprocessor" -> "graph.data"
+	"graph.preprocessor" -> "graph.predictor"
+	fontsize=20
+}

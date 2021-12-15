@@ -1,0 +1,17 @@
+digraph vision_dot {
+	node [shape=box]
+	subgraph cluster_vision {
+		"vision.data"
+		"vision.learner"
+		"vision.models"
+		"vision.predictor"
+		"vision.preprocessor"
+		"vision.wrn"
+		label="ktrain.vision"
+	}
+	"vision.preprocessor" -> "vision.data"
+	"vision.data" -> "vision.learner"
+	"vision.wrn" -> "vision.models"
+	"vision.preprocessor" -> "vision.predictor"
+	fontsize=20
+}

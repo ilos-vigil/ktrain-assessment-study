@@ -1,0 +1,13 @@
+digraph tabular_dot {
+	node [shape=box]
+	subgraph cluster_tabular {
+		"tabular.data"
+		"tabular.models"
+		"tabular.predictor"
+		"tabular.preprocessor"
+		label="ktrain.tabular"
+	}
+	"tabular.preprocessor" -> "tabular.data"
+	"tabular.preprocessor" -> "tabular.predictor"
+	fontsize=20
+}

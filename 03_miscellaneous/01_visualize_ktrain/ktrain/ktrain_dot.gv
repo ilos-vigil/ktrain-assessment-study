@@ -1,0 +1,57 @@
+digraph ktrain_dot {
+	node [shape=box]
+	subgraph cluster {
+		node [shape=box]
+		core
+		data
+		imports
+		lroptimize
+		models
+		predictor
+		preprocessor
+		utils
+		model
+		vision
+		text
+		"graph"
+		tabular
+		label=ktrain
+	}
+	imports -> core
+	lroptimize -> core
+	utils -> core
+	vision -> core
+	text -> core
+	"graph" -> core
+	tabular -> core
+	imports -> data
+	imports -> model
+	imports -> predictor
+	utils -> predictor
+	imports -> preprocessor
+	imports -> utils
+	data -> utils
+	core -> "graph"
+	imports -> "graph"
+	models -> "graph"
+	data -> "graph"
+	imports -> "graph"
+	predictor -> "graph"
+	utils -> "graph"
+	imports -> tabular
+	models -> tabular
+	predictor -> tabular
+	utils -> tabular
+	preprocessor -> tabular
+	imports -> text
+	utils -> text
+	core -> text
+	data -> text
+	preprocessor -> text
+	core -> vision
+	imports -> vision
+	predictor -> vision
+	preprocessor -> vision
+	utils -> vision
+	fontsize=20
+}

@@ -1,0 +1,11 @@
+[PAD]
+[UNK]
+[CLS]
+[SEP]
+[MASK]
+bagaimana
+rasanya
+kentang
+goreng
+keju
+enak

@@ -1,0 +1,40 @@
+digraph ktrain_text_dot {
+	node [shape=box]
+	subgraph cluster_text {
+		"text.data"
+		"text.eda"
+		"text.learner"
+		"text.models"
+		"text.predictor"
+		"text.preprocessor"
+		"text.qa.core"
+		"text.summarization.core"
+		"text.textutils"
+		"text.translation.core"
+		"text.zsl.core"
+		"text.ner"
+		subgraph "cluster_text.shallownlp" {
+			node [shape=box]
+			"text.shallownlp.classifier"
+			"text.shallownlp.imports"
+			"text.shallownlp.ner"
+			"text.shallownlp.searcher"
+			"text.shallownlp.utils"
+			label="ktrain.text.shallownlp"
+		}
+		label="ktrain.text"
+	}
+	"text.preprocessor" -> "text.data"
+	"text.textutils" -> "text.data"
+	"text.preprocessor" -> "text.eda"
+	"text.textutils" -> "text.eda"
+	"text.preprocessor" -> "text.learner"
+	"text.preprocessor" -> "text.models"
+	"text.preprocessor" -> "text.predictor"
+	"text.textutils" -> "text.preprocessor"
+	"text.textutils" -> "text.qa.core"
+	"text.preprocessor" -> "text.qa.core"
+	"text.textutils" -> "text.ner"
+	"text.preprocessor" -> "text.ner"
+	"text.data" -> "text.shallownlp.utils" [style=invis]
+}
